@@ -18,12 +18,12 @@ class Boat(Wearable):
         self.size = size
         self.seats = seats
         self.anchor = anchor
-        self.oars = oars
+        self.oars = oars if oars is not None else set()
         
     def __str__(self):
         return (f"Лодка. Материал: {self.material}, Размер: {self.size}, Сидения: {self.seats}\n"
-                f"Якорь: {'Нет' if self.anchor is None else self.anchor}\n"
-                f"Весла: {'Нет' if self.oars is None else self.oars}\n"
+                f"Якорь: {'Нет' if not self.anchor else self.anchor}\n"
+                f"Весла: {'Нет' if not self.oars else self.oars}\n"
                 f"Износ: {self.wear}/10")
     
     def add_anchor(self, anchor: Anchor):
@@ -37,13 +37,13 @@ class Boat(Wearable):
             self.anchor.drop_anchor()
             
     def raise_anchor(self):
-        if self.anchor and not self.anchor.is_dropped:
+        if self.anchor and self.anchor.is_dropped:
             self.anchor.raise_anchor()
             
     def can_move(self):
-        if self.oars is None:
+        if not self.oars:
             return False
-        if self.anchor.is_dropped or self.anchor is None or self.anchor.wear >= 10:
+        if self.anchor.is_dropped or not self.anchor or self.anchor.wear >= 10:
             return False
         for oar in self.oars:
             if oar.wear >= 10:
