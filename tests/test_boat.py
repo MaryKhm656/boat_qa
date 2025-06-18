@@ -31,6 +31,13 @@ def test_added_oar_after_create_boat():
     assert oar_1 in boat_1.oars
     assert boat_1.can_move() == True
 
+def test_added_anchor_after_creating_boat():
+    boat_1 = Boat('дерево', 30, 2)
+    assert boat_1.anchor is None
+    anchor_1 = Anchor(300, 100)
+    boat_1.add_anchor(anchor_1)
+    assert boat_1.anchor == anchor_1
+
 
 def test_is_moving_method():
     oar_1 = Oar(10, 'дерево')
