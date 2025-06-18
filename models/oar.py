@@ -1,4 +1,4 @@
-from wearable import Wearable
+from models.wearable import Wearable
 
 class Oar(Wearable):
     
@@ -10,6 +10,9 @@ class Oar(Wearable):
         
     def __str__(self):
         return f"Весло. Материал: {self.material}, Размер: {self.size}, Износ: {self.wear}/10"
+    
+    def __repr__(self):
+        return self.__str__()
     
     def get_eff(self):
         if self.wear >= 10:
@@ -24,3 +27,4 @@ class Oar(Wearable):
         
     def stop_rowing(self):
         self.is_rowing = False
+        self.wear += 1

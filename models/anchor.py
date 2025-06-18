@@ -1,4 +1,4 @@
-from wearable import Wearable
+from models.wearable import Wearable
 
 class Anchor(Wearable):
     
@@ -16,3 +16,4 @@ class Anchor(Wearable):
         
     def raise_anchor(self):
         self.is_dropped = False
+        self.wear += 1

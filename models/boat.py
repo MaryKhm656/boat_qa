@@ -1,6 +1,6 @@
-from oar import Oar
-from anchor import Anchor
-from wearable import Wearable
+from models.oar import Oar
+from models.anchor import Anchor
+from models.wearable import Wearable
 
 class Boat(Wearable):
     
