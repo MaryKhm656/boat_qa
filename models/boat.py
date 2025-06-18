@@ -43,8 +43,9 @@ class Boat(Wearable):
     def can_move(self):
         if not self.oars:
             return False
-        if self.anchor.is_dropped or not self.anchor or self.anchor.wear >= 10:
-            return False
+        if self.anchor:
+            if self.anchor.is_dropped or self.anchor.wear >= 10:
+                return False
         return any(oar.wear < 10 for oar in self.oars)
 
     
