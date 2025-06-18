@@ -42,3 +42,9 @@ def test_speed_for_two_oars():
     boat_1 = Boat('дерево', 30, 2, oars={oar_1, oar_2})
     boat_1.start_rowing()
     assert boat_1.get_speed() == 0.9
+    
+def test_moving_with_wear_oars():
+    oar_1 = Oar(10, 'дерево', wear=10)
+    boat_1 = Boat('дерево', 30, 2, oars={oar_1})
+    assert boat_1.can_move() == False
+    
