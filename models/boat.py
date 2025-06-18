@@ -45,10 +45,8 @@ class Boat(Wearable):
             return False
         if self.anchor.is_dropped or not self.anchor or self.anchor.wear >= 10:
             return False
-        for oar in self.oars:
-            if oar.wear >= 10:
-                return False
-        return True
+        return any(oar.wear < 10 for oar in self.oars)
+
     
     def start_rowing(self):
         if self.can_move():
