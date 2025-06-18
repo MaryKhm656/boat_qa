@@ -28,3 +28,17 @@ def test_added_oar_after_create_boat():
     oar_1 = Oar(10, 'дерево')
     boat_1.add_oar(oar_1)
     assert boat_1.can_move() == True
+
+
+def test_is_moving_method():
+    oar_1 = Oar(10, 'дерево')
+    boat_1 = Boat('дерево', 30, 2, oars={oar_1})
+    boat_1.start_rowing()
+    assert boat_1.is_moving() == True
+    
+def test_speed_for_two_oars():
+    oar_1 = Oar(10, 'дерево', wear=2)
+    oar_2 = Oar(11, 'дерево')
+    boat_1 = Boat('дерево', 30, 2, oars={oar_1, oar_2})
+    boat_1.start_rowing()
+    assert boat_1.get_speed() == 0.9
