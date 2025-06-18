@@ -20,6 +20,7 @@ def test_successful_rowing():
     oar_1 = Oar(10, 'дерево')
     boat_1 = Boat('дерево', 30, 2, oars={oar_1})
     boat_1.start_rowing()
+    assert boat_1.is_moving() == True
     assert boat_1.get_speed() == 1.0
     
 def test_added_oar_after_create_boat():
@@ -27,6 +28,7 @@ def test_added_oar_after_create_boat():
     assert boat_1.can_move() == False
     oar_1 = Oar(10, 'дерево')
     boat_1.add_oar(oar_1)
+    assert oar_1 in boat_1.oars
     assert boat_1.can_move() == True
 
 
